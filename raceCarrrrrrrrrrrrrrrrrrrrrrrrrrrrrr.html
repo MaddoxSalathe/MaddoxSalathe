@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>carrrrrrrrrrrrrrr</title>
+  <style>
+    img {
+      width: 20%;
+      height: 20%;
+      background-color: black;
+      position: absolute;
+    }
+
+    #car2 {
+      top: 150px;
+    }
+
+    #car4 {
+      top: 380px;
+    }
+
+    #car3 {
+      top: 300px;
+    }
+
+    body {
+      background: black;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <div>
+    <img id="car1"
+      src="https://cubscoutideas.com/wp-content/uploads/2017/04/steve-from-minecraft-pinewood-derby-car-300x225.jpg"
+      </div>
+    <div>
+      <img id="car2" src="https://i1.sndcdn.com/artworks-000440403354-r36vtk-t500x500.jpg" </div>
+      <div>
+      </div>
+      <div>
+        <img id="car4"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqg5XwFvCqXWwaD5la6NJiK4zNDSDymac_5aS7F-ERmm9AvZfFvmUnnYMHOP6ErsvzrWI&usqp=CAU"
+          </div>
+        <img id="car3" src="https://theacademyadvocate.com/wp-content/uploads/2022/09/AndrewTate.png" </body>
+
+</html>
+<script>
+  var speed = 10
+  var x1 = 0
+  var x2 = 0
+  var x3 = 0
+  var x4 = 0
+  var superior = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  var acceleration = 10
+  function keyHandler(e) {
+    console.log(e.key)
+    if (e.key === "f") {
+      
+      x3 = x3 + superior
+      x4 = x4 + superior
+    }
+    if (e.key === "g") {
+
+      x1 = x1 + speed
+    }
+    if (e.key === "h") {
+
+      x2 = x2 + acceleration
+    }
+      document.getElementById("car1").style.left = x1 + "px"
+      document.getElementById("car2").style.left = x2 + "px"
+      document.getElementById("car3").style.left = x3 + "px"
+      document.getElementById("car4").style.left = x4 + "px"
+      if (x1 > 1000) {
+
+      }
+      if (x2 > 1000) {
+
+      }
+      if (x3 > 1000) {
+
+      }
+      if (x4 > 1000) {
+
+      }
+
+    
+  }
+  document.addEventListener("keydown", keyHandler)
+
+</script>

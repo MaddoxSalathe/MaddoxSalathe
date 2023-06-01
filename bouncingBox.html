@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>bouncing box</title>
+  <style>
+    #box{
+        background-color: blue;
+        position: absolute;
+        
+    }
+   img {
+    width: 200%;
+    height: 200%;
+  }
+  </style>
+
+  <style>
+    #back{
+    background: black;
+    }
+  </style>
+
+</head>
+<body style="background-color:rgb(16, 16, 255)">
+
+    <div id="box">
+        <img src="https://q7w8u3i3.stackpathcdn.com/wp-content/uploads/2022/06/t-291.png"
+    </div>
+    
+</body>
+</html>
+
+<script>
+    var altitude = 3
+    var speed = 3
+    var x = 100
+    var y = 100
+    
+    setInterval(moveBox,50)
+
+    function moveBox(){
+        x = x + speed
+        y = y + altitude
+        document.getElementById("box").style.left = x + "px"
+        if(x>1000){
+            speed = speed *-1
+        }
+        if(x<10){
+            speed = speed * -1
+        }
+        document.getElementById("box").style.top = y + "px"
+        if(y>485){
+            altitude = altitude *-1
+        }
+        if(y<0){
+            altitude = altitude * -1
+        }
+    }
+
+
+</script>

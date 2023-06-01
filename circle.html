@@ -1,0 +1,43 @@
+<body>
+  <canvas id="canvas" width="800" height="600">
+  </canvas>
+</body>
+<script>
+  var canvas = document.getElementById("canvas")
+  var ctx = canvas.getContext("2d")
+  var y = [53, 76, 47, 43, 40, 60, 28, 37, 42, 32, 30, 60, 62, 49, 27, 35, 34, 38, 36, 36]
+  var speedy = [59, 52, 43, 77, 27, 62, 58, 83, 55, 57, 46, 75, 67, 60, 62, 48, 72, 51, 63, 69]
+  var speedx = [53, 76, 47, 43, 40, 60, 28, 37, 42, 32, 30, 60, 62, 49, 27, 35, 34, 38, 36, 36]
+  var x = [56, 87, 64, 48, 72, 51, 67, 92, 65, 51, 54, 55, 35, 46, 59, 32, 31, 64, 75, 49]
+
+
+  function draw() {
+
+    ctx.clearRect(0, 0, 800, 800)
+    for (i = 0; i < 20; i = i + 1) {
+      ctx.fillRect(x[i], y[i], 100, 100)
+      y[i] = y[i] + speedy[i]
+      x[i] = x[i] + speedx[i]
+      if (y[i] > 700) {
+        speedy[i] = speedy[i] * -1
+      }
+      if (y[i] < 0) {
+        speedy[i] = speedy[i] * -1
+      }
+      if (x[i] > 700) {
+        speedx[i] = speedx[i] * -1
+      }
+      if (x[i] < 0) {
+        speedx[i] = speedx[i] * -1
+      }
+    }
+
+
+
+  }
+
+
+  draw()
+  setInterval(draw, 16)
+
+</script>
