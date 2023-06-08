@@ -37,19 +37,37 @@ $(document).ready(function () {
   // ALL OF YOUR CODE SHOULD GO BELOW HERE ////////
   /////////////////////////////////////////////////
 
-  // TODO 1: create a new shape object and add it to the array
+ // TODO 1: create a new shape object and add it to the array
+const newShape = {
+  color: "blue",
+  shape: "circle",
+  repeat: 3,
+  goodBehavior: "spin",
+  };
+  dataShapes.push(newShape);
   
-
   // TODO 2: add a new property to all data shapes
+  dataShapes.forEach((shape) => {
+  shape.goodBehavior = "bounce";
+  });
   
-
   // TODO 3-a: add a function that handles the static display type
+  function handleStatic() {
+  setBackgroundWithObject(dataShapes[currentIndex]);
+  animationDetails.displayType = 1;
+  }
   
-
   // TODO 4-a: add a function that handles the good display type
+  function handleGood() {
+  setBackgroundWithMixed(dataShapes[currentIndex], 2);
+  animationDetails.displayType = 2;
+  }
   
-
   // TODO 5-a: add a function that handles the bad display type
+  function handleBad() {
+  setBackgroundWithSimple("black", "rectangle", 1);
+  animationDetails.displayType = 3;
+  }
   
 
   /////////////////////////////////////////////////
@@ -58,19 +76,18 @@ $(document).ready(function () {
 
   function staticDisplay() {
     // TODO 3-b: call your handleStatic function
+    handleStatic();
+    }
     
-  }
-
-  function goodDisplay() {
+    function goodDisplay() {
     // TODO 4-b: call your handleGood function
+    handleGood();
+    }
     
-  }
-
-  function badDisplay() {
+    function badDisplay() {
     // TODO 5-b: call your handleBad function
-    
-  }
-
+    handleBad();
+    }
   /////////////////////////////////////////////////
   // ALL OF YOUR CODE SHOULD GO ABOVE HERE ////////
   /////////////////////////////////////////////////
