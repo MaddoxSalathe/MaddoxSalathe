@@ -115,9 +115,21 @@ function checkForNewDirection(event) {
     snake.head.direction = "left";
   }
 
+  if (activeKey === KEY.RIGHT) {
+    snake.head.direction = "right";
+  }
+
+  if (activeKey === KEY.UP) {
+    snake.head.direction = "up";
+  }
+
+  if (activeKey === KEY.DOWN) {
+    snake.head.direction = "down";
+  }
+
   // FILL IN THE REST
 
-  // console.log(snake.head.direction);     // uncomment me!
+    console.log(snake.head.direction);
 }
 
 function hasCollidedWithApple() {
