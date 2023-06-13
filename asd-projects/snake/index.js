@@ -36,7 +36,8 @@ var activeKey;
 ////////////////////////////////////////////////////////////////////////////////
 
 // TODO 4: Add an event listener for the keydown event to enable keyboard inputs.
-$(document).on('keydown', checkForNewDirection);
+$(document).on('keydown', handleKeyDown);
+$('body').on('keydown', handleKeyDown);
 
 // start the game
 init();
@@ -90,7 +91,7 @@ function moveSnake() {
 
 
   //Before moving the head, check for a new direction from the keyboard input
-  checkForNewDirection();
+  handleKeyDown();
 
 
   /* 
@@ -99,18 +100,21 @@ function moveSnake() {
   HINT: The snake's head will need to move forward 1 square based on the value
   of snake.head.direction which may be one of "left", "right", "up", or "down"
   */
-
+  if (snake.head.direction === 'left') {
+    snake.head.column = snake.head.column - 1;
+  }
+  repositionSquare(snake.head);
 
 }
 
-function checkForNewDirection(event) {
+function handleKeyDown(event) {
   /* 
   TODO 5: Update snake.head.direction based on the value of activeKey.
   
   BONUS: Only allow direction changes to take place if the new direction is
   perpendicular to the current direction
   */
-
+  $('body').on('keydown', handleKeyDown);
   if (activeKey === KEY.LEFT) {
     snake.head.direction = "left";
   }
@@ -196,13 +200,18 @@ function hasHitWall() {
 
 function handleGameover() {
   clearInterval(updateInterval);
-  $(document).off('keydown', checkForNewDirection);
+  $(document).off('keydown', handleKeyDown);
   alert("Game Over! Your score is: " + score);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+function handleKeyDown(event) {
+  activeKey = event.which;
+  console.log(activeKey);
+}
 
 function makeSnakeSquare(row, column) {
   var snakeSquare = {}
@@ -260,7 +269,7 @@ function getRandomAvailablePosition() {
   return randomPosition;
 }
 
-function checkForNewDirection(event) {
+function handleKeyDown(event) {
   activeKey = event.which;
   console.log(activeKey);
 }
