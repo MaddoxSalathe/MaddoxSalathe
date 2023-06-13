@@ -99,9 +99,10 @@ function handleStatic(data) {
     // TODO 5-b: call your handleBad function
    let currentShape = dataShapes[currentIndex];
   let repeat = currentShape.repeat;
-  }
+    handleBad(currentShape, repeat);
+}
  
-  handleBad(currentShape, repeat);
+
   /////////////////////////////////////////////////
   // ALL OF YOUR CODE SHOULD GO ABOVE HERE ////////
   /////////////////////////////////////////////////
