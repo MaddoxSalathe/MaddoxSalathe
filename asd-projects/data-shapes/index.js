@@ -84,20 +84,20 @@ function handleStatic(data) {
   /////////////////////////////////////////////////
   // BUTTON HANDLERS BELOW HERE (3-b, 4-b, 5-b) ///
   /////////////////////////////////////////////////
-
   function staticDisplay() {
     // TODO 3-b: call your handleStatic function
+  handleStatic(dataShapes[currentIndex]);
   }
-handleStatic(dataShapes[currentIndex]);
+
   function goodDisplay() {
     // TODO 4-b: call your handleGood function
-    let currentShape = dataShapes[currentIndex];
+   let currentShape = dataShapes[currentIndex];
   handleGood(currentShape.color, currentShape.shape, currentShape.repeat);
-  function badDisplay() {
   }
-  
-    // TODO 5-b: call your handleBad function 
-    let currentShape = dataShapes[currentIndex];
+ 
+  function badDisplay() {
+    // TODO 5-b: call your handleBad function
+   let currentShape = dataShapes[currentIndex];
   let repeat = currentShape.repeat;
   }
  
