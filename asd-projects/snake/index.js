@@ -108,6 +108,9 @@ function moveSnake() {
 }
 
 function handleKeyDown(event) {
+  activeKey = event.which;
+  console.log(activeKey);
+}
   /* 
   TODO 5: Update snake.head.direction based on the value of activeKey.
   
@@ -208,10 +211,8 @@ function handleGameover() {
 ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function handleKeyDown(event) {
-  activeKey = event.which;
-  console.log(activeKey);
-}
+
+  
 
 function makeSnakeSquare(row, column) {
   var snakeSquare = {}
