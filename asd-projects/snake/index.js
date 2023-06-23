@@ -35,27 +35,13 @@ var activeKey;
 ////////////////////////////// GAME SETUP //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-// TODO 4: Add an event listener for the keydown event to enable keyboard inputs.
-$(document).on('keydown', handleKeyDown);
-$('body').on('keydown', handleKeyDown);
+$(document).ready(function () {
+  // TODO 4: Add an event listener for the keydown event to enable keyboard inputs.
+  $(document).on('keydown', handleKeyDown);
 
-// start the game
-init();
-
-function init() {
-  // initialize the snake's body as an empty Array
-  snake.body = [];
-
-  // make the first snakeSquare and set it as the head
-  makeSnakeSquare(10, 10);
-  snake.head = snake.body[0];
-
-  // TODO 8: Initialize the first apple
-  makeApple();
-
-  // start update interval
-  updateInterval = setInterval(update, 100);
-}
+  // start the game
+  init();
+});
 
 ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////// PROGRAM FUNCTIONS ////////////////////////////////////
@@ -75,84 +61,71 @@ function update() {
   if (hasCollidedWithApple()) {
     handleAppleCollision();
   }
-
 }
 
 function moveSnake() {
   /* 
-  TODO 11: Move each part of the snake's body such that it's body follows the head.
-  
-  HINT: To complete this TODO we must figure out the next direction, row, and 
-  column for each snakeSquare in the snake's body. The parts of the snake are 
-  stored in the Array snake.body and each part knows knows its current 
-  column/row properties. 
-  
+    TODO 11: Move each part of the snake's body such that its body follows the head.
+
+    HINT: To complete this TODO, we must figure out the next direction, row, and 
+    column for each snakeSquare in the snake's body. The parts of the snake are 
+    stored in the Array snake.body and each part knows its current 
+    column/row properties. 
   */
-
-
-  //Before moving the head, check for a new direction from the keyboard input
+  
+  // Before moving the head, check for a new direction from the keyboard input
   handleKeyDown();
 
-
-  /* 
-  TODO 6: determine the next row and column for the snake's head
-  
-  HINT: The snake's head will need to move forward 1 square based on the value
-  of snake.head.direction which may be one of "left", "right", "up", or "down"
-  */
+  // Move the head based on the current direction
   if (snake.head.direction === 'left') {
     snake.head.column = snake.head.column - 1;
+  } else if (snake.head.direction === 'right') {
+    snake.head.column = snake.head.column + 1;
+  } else if (snake.head.direction === 'up') {
+    snake.head.row = snake.head.row - 1;
+  } else if (snake.head.direction === 'down') {
+    snake.head.row = snake.head.row + 1;
   }
-  repositionSquare(snake.head);
 
+  repositionSquare(snake.head);
 }
 
 function handleKeyDown(event) {
-  activeKey = event.which;
-  console.log(activeKey);
-}
+ $(document).on('keydown', function(event) {
+  handleKeyDown(event);
+});
+
+
   /* 
-  TODO 5: Update snake.head.direction based on the value of activeKey.
-  
-  BONUS: Only allow direction changes to take place if the new direction is
-  perpendicular to the current direction
+    TODO 5: Update snake.head.direction based on the value of activeKey.
+
+    BONUS: Only allow direction changes to take place if the new direction is
+    perpendicular to the current direction.
   */
-  $('body').on('keydown', handleKeyDown);
-  if (activeKey === KEY.LEFT) {
-    snake.head.direction = "left";
+  if (activeKey === KEY.LEFT && snake.head.direction !== 'right') {
+    snake.head.direction = 'left';
+  } else if (activeKey === KEY.RIGHT && snake.head.direction !== 'left') {
+    snake.head.direction = 'right';
+  } else if (activeKey === KEY.UP && snake.head.direction !== 'down') {
+    snake.head.direction = 'up';
+  } else if (activeKey === KEY.DOWN && snake.head.direction !== 'up') {
+    snake.head.direction = 'down';
   }
-
-  if (activeKey === KEY.RIGHT) {
-    snake.head.direction = "right";
-  }
-
-  if (activeKey === KEY.UP) {
-    snake.head.direction = "up";
-  }
-
-  if (activeKey === KEY.DOWN) {
-    snake.head.direction = "down";
-  }
-
-  // FILL IN THE REST
-
-    console.log(snake.head.direction);
 }
 
 function hasCollidedWithApple() {
   /* 
-  TODO 9: Should return true if the snake's head has collided with the apple, 
-  false otherwise
+    TODO 9: Should return true if the snake's head has collided with the apple, 
+    false otherwise.
   
-  HINT: Both the apple and the snake's head are aware of their own row and column
+    HINT: Both the apple and the snake's head are aware of their own row and column.
   */
-
   return snake.head.row === apple.row && snake.head.column === apple.column;
 }
 
 function handleAppleCollision() {
   score++;
-  scoreElement.text("Score: " + score);
+  scoreElement.text('Score: ' + score);
 
   apple.element.remove();
   makeApple();
@@ -162,21 +135,19 @@ function handleAppleCollision() {
   var column = tail.column;
 
   /* 
-  TODO 10: determine the location of the next snakeSquare based on the .row,
-  .column and .direction properties of the snake.tail snakeSquare
-  
-  HINT: snake.tail.direction will be either "left", "right", "up", or "down".
-  If the tail is moving "left", place the next snakeSquare to its right. 
-  If the tail is moving "down", place the next snakeSquare above it.
-  etc...
+    TODO 10: Determine the new row and column for the new tail square.
+
+    HINT: Depending on the current direction of the snake, the new tail square 
+    will be positioned to the left, right, above, or below the current tail 
+    square. Use the row and column variables to set the new values.
   */
-  if (tail.direction === "left") {
+  if (tail.direction === 'left') {
     column++;
-  } else if (tail.direction === "right") {
+  } else if (tail.direction === 'right') {
     column--;
-  } else if (tail.direction === "up") {
+  } else if (tail.direction === 'up') {
     row++;
-  } else if (tail.direction === "down") {
+  } else if (tail.direction === 'down') {
     row--;
   }
 
@@ -204,21 +175,20 @@ function hasHitWall() {
 function handleGameover() {
   clearInterval(updateInterval);
   $(document).off('keydown', handleKeyDown);
-  alert("Game Over! Your score is: " + score);
+  alert('Game Over! Your score is: ' + score);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-
-  
-
 function makeSnakeSquare(row, column) {
-  var snakeSquare = {}
-  snakeSquare.element = $('<div>').addClass('snake').appendTo(board);
-  snakeSquare.row = row;
-  snakeSquare.column = column;
+  var snakeSquare = {
+    element: $('<div>').addClass('snake').appendTo(board),
+    row: row,
+    column: column
+  };
+  
   repositionSquare(snakeSquare);
 
   if (snake.body.length === 0) {
@@ -229,17 +199,6 @@ function makeSnakeSquare(row, column) {
   snake.tail = snakeSquare;
 }
 
-function repositionSquare(square) {
-  var squareElement = square.element;
-  var row = square.row;
-  var column = square.column;
-
-  var buffer = 20;
-
-  squareElement.css('left', column * SQUARE_SIZE + buffer);
-  squareElement.css('top', row * SQUARE_SIZE + buffer);
-}
-
 function makeApple() {
   apple.element = $('<div>').addClass('apple').appendTo(board);
 
@@ -248,6 +207,26 @@ function makeApple() {
   apple.column = randomPosition.column;
 
   repositionSquare(apple);
+}
+
+function init() {
+  snake.body = [];
+  makeSnakeSquare(10, 10);
+  snake.head = snake.body[0];
+
+  makeApple();
+
+  updateInterval = setInterval(update, 100);
+}
+
+function repositionSquare(square) {
+  var squareElement = square.element;
+  var row = square.row;
+  var column = square.column;
+  var buffer = 20;
+
+  squareElement.css('left', column * SQUARE_SIZE + buffer);
+  squareElement.css('top', row * SQUARE_SIZE + buffer);
 }
 
 function getRandomAvailablePosition() {
@@ -270,22 +249,19 @@ function getRandomAvailablePosition() {
   return randomPosition;
 }
 
-function handleKeyDown(event) {
-  activeKey = event.which;
-  console.log(activeKey);
-}
-
 function calculateHighScore() {
-  var highScore = sessionStorage.getItem("highScore") || 0;
+  var highScore = sessionStorage.getItem('highScore') || 0;
 
   if (score > highScore) {
-    sessionStorage.setItem("highScore", score);
     highScore = score;
-    alert("New High Score!");
+    sessionStorage.setItem('highScore', highScore);
   }
 
-  highScoreElement.text("High Score: " + highScore);
+  return highScore;
 }
 
-// call calculateHighScore() to initialize the high score from session storage
-calculateHighScore();
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////// EVENT HANDLERS //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+highScoreElement.text('High Score: ' + calculateHighScore());
