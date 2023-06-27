@@ -91,10 +91,8 @@ function moveSnake() {
 }
 
 function handleKeyDown(event) {
- $(document).on('keydown', function(event) {
-  handleKeyDown(event);
-});
-``
+activeKey = event.which;
+console.log(activityKey);
 
   /* 
     TODO 5: Update snake.head.direction based on the value of activeKey.
