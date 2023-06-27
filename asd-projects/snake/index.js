@@ -92,7 +92,7 @@ function moveSnake() {
 
 function handleKeyDown(event) {
 activeKey = event.which;
-console.log(activityKey);
+console.log(activeKey);
 
   /* 
     TODO 5: Update snake.head.direction based on the value of activeKey.
