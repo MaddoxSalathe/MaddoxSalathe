@@ -74,7 +74,7 @@ function moveSnake() {
   */
   
   // Before moving the head, check for a new direction from the keyboard input
-  handleKeyDown();
+  
 
   // Move the head based on the current direction
   if (snake.head.direction === 'left') {
@@ -94,7 +94,7 @@ function handleKeyDown(event) {
  $(document).on('keydown', function(event) {
   handleKeyDown(event);
 });
-
+``
 
   /* 
     TODO 5: Update snake.head.direction based on the value of activeKey.
