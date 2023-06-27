@@ -426,7 +426,7 @@ if (activeKey is the left Arrow) {
 
 However, in the classic Snake game, the Arrow keys only change the _**direction**_ of the snake.
 
-Find the definition of the Function `checkForNewDirection` and you'll see the comment for `// TODO 5`.  We've started a solution for this function for you. You should see this code:
+Find the definition of the Function `checkForNewDirection` and you'll see the comment for `// todo 5TODO 5`.  We've started a solution for this function for you. You should see this code:
 
 ```js
 if (activeKey === KEY.LEFT) { 

@@ -72,6 +72,20 @@ function moveSnake() {
     stored in the Array snake.body and each part knows its current 
     column/row properties. 
   */
+    for ( /* code to loop through the indexes of the snake.body Array*/ ) {
+      var snakeSquare = "???";
+      
+      var nextSnakeSquare = "???";
+      var nextRow = "???";
+      var nextColumn = "???";
+      var nextDirection = "???";
+      
+      snakeSquare.direction = nextDirection;
+      snakeSquare.row = nextRow;
+      snakeSquare.column = nextColumn;
+      repositionSquare(snakeSquare);
+  }
+  ```
   
   // Before moving the head, check for a new direction from the keyboard input
   
