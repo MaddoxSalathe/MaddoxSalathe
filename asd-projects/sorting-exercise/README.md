@@ -106,26 +106,7 @@ Your first task is to create the `swap` function.
 
 >**Hint:** You may want to create a temporary variable to complete the swap successfully.
 
-## TODO 2: Implement Bubble Sort
-
-The goal of this TODO is to implement bubbleSort. Below is a description of the function. 
-
->* **Name:** `bubbleSort`
->* **Parameters:**
->    1. `array`: the array whose elements need to be sorted
->* **Returns:** Nothing
->* **Description:** `bubbleSort` sorts all elements of the provided array from smallest to largest. It should also update the relevant swap counter and run at the specified rate so that the sorting can be properly visualized.
-
-<hr>
-
-* **2a)** Create the skeleton of the function described above. This means you should name it and give it the necessary parameter(s). That is all you need to do for this step.
-
->**IMPORTANT:** You must add the `async` keyword before the word `function`. This is required to make your sorting compatible with the `sleep` function, which is necessary to visualize your sorting. So, your function declaration should look like
->
->```js
->    async function nameOfFunction(params){}
->```
-
+## wwwwwwwwwwwwwwwwwwwwwwwwwwwww
 <hr>
 
 * **2b)** Implement `bubbleSort`. In other words, make the function actually do the job it's supposed to do. Your comparison should check if the element with the lower index has a greater value than the element with the higher index. **Note that this version of bubble sort is different than the one you saw in class.** The pseudocode for it is as follows:
