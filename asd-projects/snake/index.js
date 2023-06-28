@@ -55,7 +55,7 @@ function update() {
   moveSnake();
 
   if (hasHitWall() || hasCollidedWithSnake()) {
-    handleGameover();
+    endGame();
   }
 
   if (hasCollidedWithApple()) {
@@ -184,10 +184,22 @@ function hasHitWall() {
   );
 }
 
-function handleGameover() {
+function endGame() {
+  // stop update function from running
   clearInterval(updateInterval);
-  $(document).off('keydown', handleKeyDown);
-  alert('Game Over! Your score is: ' + score);
+
+  // clear board of all elements
+  board.empty();
+  
+  // update the highScoreElement to display the highScore
+  highScoreElement.text("High Score: " + calculateHighScore());
+  scoreElement.text("Score: 0");
+  score = 0;
+
+  // restart the game after 500 ms
+  setTimeout(init, 500);
+
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
